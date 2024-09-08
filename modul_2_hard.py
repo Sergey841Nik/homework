@@ -52,5 +52,5 @@ class Rashifrovka:
 
 
 tak = Rashifrovka(20)
-# print(tak._get_one_rshifrovk(15))
+print(tak._get_one_rshifrovk(15))
 tak.get_all_rshifrovk()
