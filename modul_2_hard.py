@@ -20,7 +20,7 @@ for i in range(3, 21):
     lst_s_dev.clear()
 
 
-# 2-й способ. Для души. С рекурсией и классом
+# 2-й способ. Для души. С рекурсией
 class Rashifrovka:
     def __init__(self, n):
         self.n = n
