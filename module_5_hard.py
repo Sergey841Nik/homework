@@ -41,6 +41,10 @@ class UrTube:
     
     def register(self, name: str, password: str, age: int):
         user = Users(name, password, age)
+        for user in self.users_lst:
+            if user.name == name:
+                print(f"Пользователь с именем {name} уже зарегистрирован")
+                return
         self.users_lst.append(user)
         print("Вы успешно зарегистрировались")
     
