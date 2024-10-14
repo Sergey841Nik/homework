@@ -1,6 +1,7 @@
 
 .vscode
 .idea
+.pylintrc
 homework
 urban
 module_4_1/__pycache__
