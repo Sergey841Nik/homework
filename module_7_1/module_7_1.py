@@ -1,3 +1,4 @@
+import os
 
 class Product:
     def __init__(self, name: str, weight: float | int, category: str) -> None:
@@ -43,20 +44,17 @@ class Shop:
             return '\n'.join(res_list)
         
     def __get_product_from_file_from_verif(self, name: str) -> bool:
-        # обходим исключение при первом запуске, когда фала products.txt ещё не существует. Это костыль?
-        try:
-            products_in_file = self.products.split('\n')
-        except:
-            return False
-
+        products_in_file = self.products.split('\n')
         for info_product in products_in_file:
             if name == info_product.split(',')[0]:
                 return True
         return False
 
-
     @property #применяем этот декоратор, чтобы работать с методами как с атрибутами, для метода get(взять что-то) и set(записать что-то)
-    def products(self) -> str: 
+    def products(self) -> str:
+        # проверяем, существует ли файл
+        if not os.path.exists(f"module_7_1/{self.__file_name}"):
+            return ""
         # получаем данные из файла
         return self.__open_file(None)
     
