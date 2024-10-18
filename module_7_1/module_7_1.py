@@ -74,7 +74,6 @@ class Shop:
                 self.__open_file(prod)
                 print(f"Подукт {prod.name} добавлен")
         
-
 def main()-> None:
     shop = Shop()
     pr1 = Product("Огурцы", 150.5, "Овощи")
