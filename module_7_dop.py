@@ -6,10 +6,9 @@ class Context:
         self.__values_copy = list(self.__values)
         return self.__values_copy
     
-    def __exit__(self, exc_type, exc_val, exc_tb) -> tuple:
+    def __exit__(self, exc_type, exc_val, exc_tb) -> None:
         if exc_type is None: #если не было исключений
             self.__values = tuple(self.__values_copy)
-            return
         
         
     def __str__(self) -> str:
