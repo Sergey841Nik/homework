@@ -9,8 +9,8 @@ class Context:
     def __exit__(self, exc_type, exc_val, exc_tb) -> tuple:
         if exc_type is None: #если не было исключений
             self.__values = tuple(self.__values_copy)
-            return self.__values
-        return self.__values
+            return
+        
         
     def __str__(self) -> str:
         return str(self.__values)
