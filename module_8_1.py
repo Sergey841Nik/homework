@@ -1,5 +1,3 @@
-from typing import Any
-
 
 def add_everything_up(a: int | float | str, b: int | float | str) -> int | float | str:
     try:
