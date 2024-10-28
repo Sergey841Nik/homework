@@ -40,11 +40,11 @@ class Car:
         self.__is_valid_numbers(self.__numbers)
 
     def __is_valid_type(self, *args)-> None:
-        if not isinstance(self.model, str):
+        if not isinstance(args[0], str):
             raise IncorrectTypesInfjCar('модели')
-        elif not isinstance(self.__vin, int):
+        elif not isinstance(args[1], int):
             raise IncorrectTypesInfjCar('vin номера')
-        elif not isinstance(self.__numbers, str):
+        elif not isinstance(args[2], str):
             raise IncorrectTypesInfjCar('госномера')
         
     def __is_valid_vin(self, vin_number)-> None:
@@ -64,7 +64,7 @@ class Car:
 print(Car('Reno', 5_058_958, 'а582бр'))
 # print(Car(123, 5_058_958, 'а582бр'))
 # print(Car('Reno', 5_058_9580, 'а582бр'))
-# print(Car('Reno', '5_058_958', 'а582бр'))
-print(Car('Reno', 5_058_958, 'а582б5'))
+print(Car('Reno', '5_058_958', 'а582бр'))
+# print(Car('Reno', 5_058_958, 'а582б5'))
         
         
