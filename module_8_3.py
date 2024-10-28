@@ -54,7 +54,7 @@ class Car:
     def __is_valid_numbers(self, numbers)-> None:
         #создаём шаблон для госномера, без учёта регистра
         pattern = r'^[а-яА-Я]\d{3}[а-яА-Я]{2}$'
-        if not re.match(pattern, numbers): #проверяем переданный номер на соответствие шаблону
+        if not re.match(pattern, numbers): #проверяем переданный номер на соответствие шаблону, в том числе проверяет длину строки
             raise IncorrectCarNumbers(numbers)
         
     def __str__(self) -> str:
