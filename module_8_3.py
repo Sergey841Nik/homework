@@ -33,12 +33,12 @@ class IncorrectTypesInfjCar(Exception):
     
 class Car:
     def __init__(self, model: str, vin_number: int, car_number: str) -> None:
+        self.__is_valid_type(model, vin_number, car_number)
+        self.__is_valid_vin(vin_number)
+        self.__is_valid_numbers(car_number)
         self.model = model
         self.__vin = vin_number
         self.__numbers = car_number
-        self.__is_valid_type(self.model, self.__vin, self.__numbers)
-        self.__is_valid_vin(self.__vin)
-        self.__is_valid_numbers(self.__numbers)
 
 
     def __is_valid_type(self, *args)-> None:
