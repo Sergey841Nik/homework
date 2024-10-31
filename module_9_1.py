@@ -1,8 +1,5 @@
 
 #функция вычисляет сумму квадратов всех элементов списка
-import re
-
-
 def max_sum_squares(lst: list[int | float]) -> int | float:
     return sum(map(lambda x: x ** 2, lst))
 
