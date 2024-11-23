@@ -41,6 +41,5 @@ def array():
         else:
             probeg = soul.find('span', class_='css-1osyw3j ei6iaw00').text
         # print(probeg, url_car)
-        yield name, int(price), probeg, url_car
+        yield name, price, probeg, url_car
         
-
