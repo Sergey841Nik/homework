@@ -30,16 +30,18 @@ def array():
         response = requests.get(url_car, headers=headers)
         sleep(3) #имитируем человека, работаем помедленее
         soul = BeautifulSoup(response.text, "lxml")
-        data_name = soul.find('div', class_='css-987tv1 eotelyr0')
-        name = data_name.find('h1', class_='css-1tjirrw e18vbajn0').text
+        name = soul.find('span', class_='css-1kb7l9z e162wx9x0')
+        if name:
+            name = name.text
+
+        price = soul.find('div', class_='wb9m8q0')
+        if price:
+            price = price.text.replace('₽','')
+
+        probeg = soul.find('span', class_='css-1osyw3j ei6iaw00')
+        if probeg:
+            probeg = probeg.text
         
-        price = soul.find('div', class_='wb9m8q0').text.replace('₽','')
-        price= price.replace(' ','_')
-        
-        if soul.find('span', class_='css-1osyw3j ei6iaw00') is None:
-            probeg = '-'
-        else:
-            probeg = soul.find('span', class_='css-1osyw3j ei6iaw00').text
-        # print(probeg, url_car)
         yield name, price, probeg, url_car
+        
         
