@@ -1,19 +1,19 @@
 class Runner:
-    def __init__(self, name, speed=5):
-        self.name = name
-        self.distance = 0
-        self.speed = speed
+    def __init__(self, name, speed=5) -> None:
+        self.name: str = name
+        self.distance: int = 0
+        self.speed: int = speed
 
-    def run(self):
+    def run(self) -> None:
         self.distance += self.speed * 2
 
-    def walk(self):
+    def walk(self) -> None:
         self.distance += self.speed
 
-    def __str__(self):
+    def __str__(self) -> str:
         return self.name
 
-    def __eq__(self, other):
+    def __eq__(self, other) -> bool:
         if isinstance(other, str):
             return self.name == other
         elif isinstance(other, Runner):
@@ -35,6 +35,6 @@ class Tournament:
                     finishers[place] = participant
                     place += 1
                     self.participants.remove(participant)
+                    # break
 
         return finishers
-    
