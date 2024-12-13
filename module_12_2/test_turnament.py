@@ -1,5 +1,4 @@
 import unittest
-from collections import OrderedDict
 
 from tpurnament import Runner, Tournament
 
@@ -38,7 +37,7 @@ class TournamentTest(unittest.TestCase):
         self.assertTrue(self.runner_nik == name_last)
 
     def test_tunament_usein_andrey_nik(self) -> None:
-        tr = Tournament(90, self.runner_usein, self.runner_andrey, self.participants)
+        tr = Tournament(90, self.runner_usein, self.runner_andrey, self.runner_nik)
         result: dict = tr.start()
         self.all_results[3] = result
         name_last: str = result[len(result)]
