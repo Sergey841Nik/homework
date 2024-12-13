@@ -15,9 +15,9 @@ module_12_suite_test = unittest.TestSuite()
 # module_12_suite_test.addTests(all_tests)
 
 module_12_suite_test.addTest(unittest.TestLoader().loadTestsFromTestCase(RunnerTest))
-module_12_suite_test.addTest(unittest.TestLoader().loadTestsFromTestCase(TournamentTest))
-
-
+module_12_suite_test.addTest(
+    unittest.TestLoader().loadTestsFromTestCase(TournamentTest)
+)
 
 
 run_test = unittest.TextTestRunner(verbosity=2)
