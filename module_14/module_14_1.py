@@ -1,7 +1,7 @@
 import sqlite3 as sq
 
 
-with sq.connect('module_14_1/not_telegram.db') as conn:
+with sq.connect('module_14/not_telegram.db') as conn:
     cur = conn.cursor()
     cur.execute("""
                 CREATE TABLE IF NOT EXISTS Users (
