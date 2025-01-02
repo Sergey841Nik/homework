@@ -11,6 +11,7 @@ from aiogram.types import (
     InlineKeyboardButton,
     FSInputFile,
 )
+from aiogram.types.inline_keyboard_markup import InlineKeyboardMarkup
 from aiogram.utils.keyboard import InlineKeyboardBuilder
 from aiogram.fsm.state import StatesGroup, State
 from aiogram.fsm.context import FSMContext
@@ -41,7 +42,15 @@ start_kb = ReplyKeyboardMarkup(
 
 
 # Функция  для создания инлайн клавиатур
-def get_user_inline_btns(*, btns: dict[str, str], sizes: tuple[int]):
+def get_user_inline_btns(*, btns: dict[str, str], sizes: tuple[int]) -> InlineKeyboardMarkup:
+    """
+   Функция создает инлайн-клавиатуру для пользователя.
+   Args:
+       btns (dict[str, str]): Словарь, где ключ - текст кнопки, а значение - callback_data.
+       sizes (tuple[int]): Кортеж, определяющий размеры кнопок.
+   Returns:
+       InlineKeyboardMarkup: Строка, представляющая инлайн-клавиатуру.
+   """
     keyboard = InlineKeyboardBuilder()
 
     for text, callback_data in btns.items():
@@ -57,10 +66,18 @@ async def start(message: Message) -> None:
     )
 
 
-@dp.message(F.text == "Купить")
+@dp.message(F.text == "Рассчитать")
 async def main_menu(message: Message) -> None:
+    btns = {"Рассчитать норму калорий": "calories", "Формулы расчёта": "formulas"}
+    await message.answer(
+        "Выберите опцию:", reply_markup=get_user_inline_btns(btns=btns, sizes=(2,))
+    )
+
+
+@dp.message(F.text == "Купить")
+async def get_buying_list(message: Message) -> None:
     btns = {}
-    
+
     for number in range(1, 5):
         img = FSInputFile(f"module_14/img/{number}.jpg")
         btns[f"Продукт{number}"] = "product_buying"
@@ -71,14 +88,6 @@ async def main_menu(message: Message) -> None:
     await message.answer(
         "Выберите продукт для покупки:",
         reply_markup=get_user_inline_btns(btns=btns, sizes=(4,)),
-    )
-
-
-@dp.message(F.text == "Рассчитать")
-async def get_buying_list(message: Message) -> None:
-    btns = {"Рассчитать норму калорий": "calories", "Формулы расчёта": "formulas"}
-    await message.answer(
-        "Выберите опцию:", reply_markup=get_user_inline_btns(btns=btns, sizes=(2,))
     )
 
 
