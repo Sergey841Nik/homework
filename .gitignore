@@ -14,3 +14,4 @@ module_11_1/Vesta.xlsx
 module_11_1/__pycache__
 .venv
 aiogram/.env
+module_14/.env
