@@ -51,7 +51,7 @@ async def set_age(message: Message, state: FSMContext):
 
 
 @dp.message(UserState.age)
-async def set_growth(message: types.Message, state: FSMContext):
+async def set_growth(message: Message, state: FSMContext):
     await state.update_data(age=message.text)
     await message.answer("Введите свой рост:")
     await state.set_state(UserState.growth)
