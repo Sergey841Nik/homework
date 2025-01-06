@@ -3,6 +3,8 @@ import sqlite3 as sq
 
 PATH_TO_DATABASE = 'module_14/not_telegram.db'
 
+
+################ для модуля 14.4 #####################
 def initiate_db():
     with sq.connect(PATH_TO_DATABASE) as conn:
         cur = conn.cursor()
@@ -15,6 +17,16 @@ def initiate_db():
                     img TEXT
                     )
                 """)
+        #таблица юзеров для  модуля 14.5 (в БД создана ещё в модуле 14.1)
+        cur.execute("""
+                CREATE TABLE IF NOT EXISTS Users (
+                id INTEGER PRIMARY KEY,
+                username TEXT NOT NULL,
+                email TEXT NOT NULL,
+                age INTEGER,
+                balance INTEGER NOT NULL
+                )
+            """)
         
         
 def add_product(title, description, price, img):
@@ -34,10 +46,27 @@ def get_all_products():
                 """)
         return cur.fetchall()
 
- 
+################ для модуля 14.5 #####################
+def add_user(username, email, age, balance=1000):
+    with sq.connect(PATH_TO_DATABASE) as conn:
+        cur = conn.cursor()
+        cur.execute("""
+                    INSERT INTO Users (username, email, age, balance)
+                    VALUES (?, ?, ?, ?)
+                """, (username, email, age, balance))
+        conn.commit()
+
+def is_included(username):
+    with sq.connect(PATH_TO_DATABASE) as conn:
+        cur = conn.cursor()
+        cur.execute("""
+                    SELECT username FROM Users WHERE username = :Username
+                """, {"Username": username})
+        return cur.fetchone()
+
+
 if __name__ == '__main__':
     initiate_db()
-    print(get_all_products()[0])
 
     #заполнение БД, таблицы Products
     # for number in range(1, 5):
